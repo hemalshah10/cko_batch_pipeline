@@ -4,9 +4,6 @@
 
 For this project, the chosen database technology used was Snowflake. The transformation pipeline was also developed in Snowflake.
 
-### Data Warehouse Design
-A star schema design was used for this data warehouse. 
-
 ### Steps to run the pipeline
 
 #### Users Pipeline 
