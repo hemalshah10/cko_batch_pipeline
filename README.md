@@ -1,8 +1,8 @@
 # Batch Pipeline 
 
 ## Introduction
-
 For this project, the chosen database technology used was Snowflake. The transformation pipeline was also developed in Snowflake.
+The document provides the information and steps used to answer the questions in the challenge.
 
 ### Data Warehouse Design
 A star schema design was used for this data warehouse. 
