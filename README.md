@@ -6,7 +6,11 @@ For this project, the chosen database technology used was Snowflake. The transfo
 
 ### Steps to run the pipeline
 
-#### Users Pipeline 
+#### 1. Create tables in the data warehouse
+Run the script in the [Create_Scrips.sql](Source_Code/Create_Scripts.sql).
+This will create all of the tables defined in the data warehouse design. The scripts will also created the necessary sequences and streams needed for the process.
+
+#### 2. Users Pipeline 
 1. The extract process lands the data in the users_extract table where we add the current date/time to the data.
 2. The data is then moved in to the stagings_users table. 
 ```
@@ -49,7 +53,7 @@ If a new user is added we create a new record in the table.
 truncate table staging_users;
 ```
 
-#### Pageview Pipeline
+#### 3. Pageview Pipeline
 1. The extract process lands the data in the pageview_extract table where we add the current date/time to the data.
 2. The data is then moved in to the staging_pageview table 
 ```
@@ -65,7 +69,7 @@ Insert into dim_url (url_id, url)
  inner join dim_url du on sp.url = du.url
  ))
  ```
-#### Populating the Fact table 
+#### 4. Populating the Fact table 
 Populate the fact pageview table with the following script 
 ```
 Create or replace view user_postcode_pageview as (
@@ -95,7 +99,7 @@ Select a.dim_user_id,
 )
 
 ```
-#### Populate the view to be consumed by BI tool
+#### 5. Populate the view to be consumed by BI tool
 ```
 Create or replace view user_postcode_pageview as (
 Select a.dim_user_id,
