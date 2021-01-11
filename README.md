@@ -68,7 +68,7 @@ Insert into dim_url (url_id, url)
  inner join dim_url du on sp.url = du.url
  ))
  ```
-### Populating the Fact table 
+#### Populating the Fact table 
 Populate the fact pageview table with the following script 
 ```
 Create or replace view user_postcode_pageview as (
@@ -98,7 +98,7 @@ Select a.dim_user_id,
 )
 
 ```
-### Populate the view to be consumed by BI tool
+#### Populate the view to be consumed by BI tool
 ```
 Create or replace view user_postcode_pageview as (
 Select a.dim_user_id,
