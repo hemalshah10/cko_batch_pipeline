@@ -9,7 +9,7 @@ A star schema design was used for this data warehouse.
 
 ### Steps to run the pipeline
 
-#### Users Data 
+#### Users Pipeline 
 1. The extract process lands the data in the users_extract table where we add the current date/time to the data.
 2. The data is then moved in to the stagings_users table. 
 ```
@@ -52,7 +52,7 @@ If a new user is added we create a new record in the table.
 truncate table staging_users;
 ```
 
-#### Pageview Data 
+#### Pageview Pipeline
 1. The extract process lands the data in the pageview_extract table where we add the current date/time to the data.
 2. The data is then moved in to the staging_pageview table 
 ```
@@ -127,8 +127,11 @@ Select a.dim_user_id,
 )
 ```
 
+### Scheduling the pipelines
+The Transform pipeline can be scheduled using Snowflake Tasks. 
 
-● Provide basic documentation to run the pipeline, along with any other documentation
-you think is appropriate.
+#### Users Pipeline
+The users pipeline can be scheduled to run every day at (00:05). The pipeline would run steps 1 - 5. 
 
-● Be prepared to explain your choices
+#### Pageview Pipeline
+The users pipeline can be scheduled to run every hour at 5AM. The pipeline would run steps 1 - 3. 
