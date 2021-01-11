@@ -4,14 +4,14 @@
 
 For this project, the chosen database technology used was Snowflake. The transformation pipeline was also developed in Snowflake.
 
-### Steps to run the pipeline
+### Steps To Run The Pipeline
 
-#### 1. Create tables in the data warehouse
+#### 1. Create Tables In The Data Warehouse
 Run the script in the [Create_Scrips.sql](Source_Code/Create_Scripts.sql).
 This will create all of the tables defined in the data warehouse design. The scripts will also created the necessary sequences and streams needed for the process.
 
 #### 2. Users Pipeline 
-The code for the users pipeline can be found here [Users_Pipeline.sql](Source_Code/Users_Pipeline.sql)
+The code for the users pipeline can be found here [Users_Pipeline.sql](Source_Code/Users_Pipeline.sql).
 1. The extract process lands the data in the users_extract table where we add the current date/time to the data.
 2. The data is then moved in to the stagings_users table. 
 ```
@@ -55,7 +55,7 @@ truncate table staging_users;
 ```
 
 #### 3. Pageview Pipeline
-The code for the pageview pipeline can be found here [Pageview_Pipeline.sql](Source_Code/Pageview_Pipeline.sql)
+The code for the pageview pipeline can be found here [Pageview_Pipeline.sql](Source_Code/Pageview_Pipeline.sql).
 1. The extract process lands the data in the pageview_extract table where we add the current date/time to the data.
 2. The data is then moved in to the staging_pageview table 
 ```
@@ -71,8 +71,8 @@ Insert into dim_url (url_id, url)
  inner join dim_url du on sp.url = du.url
  ))
  ```
-#### 4. Populating the Fact table and Creating view for consumption
-The code for the pageview pipeline can be found here [Populate_Fact_table.sql](Source_Code/Populate_Fact_table.sql)
+#### 4. Populating The Fact Table And Creating View For Consumption
+The code for the pageview pipeline can be found here [Populate_Fact_table.sql](Source_Code/Populate_Fact_table.sql).
 1. Populate the fact pageview table with the following script 
 ```
 Create or replace view user_postcode_pageview as (
@@ -131,7 +131,7 @@ Select a.dim_user_id,
 )
 ```
 
-### Scheduling the pipelines
+### Scheduling The pipelines
 The Transform pipeline can be scheduled using Snowflake Tasks. 
 
 #### Users Pipeline
