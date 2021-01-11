@@ -1,4 +1,4 @@
-# cko_batch_pipeline2
+# cko_batch_pipeline
 
 ## Introduction
 
